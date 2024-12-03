@@ -1,17 +1,17 @@
-
 function comprarEntradas() {
-    const edad = parseInt(prompt("Ingresa tu edad"));
-    if (edad < 18){
-        alert(`No podes ingresar a ver la pelicula`);
+    const edad = parseInt(prompt("Ingrese su edad"));
+    if (edad < 18 ){
+        alert("No tenes la edad suficiente para ver la pelicula");
         return;
     }
     const precioEntrada = 300;
-    const cantidadEntradas = parseInt(prompt("ingrese la cantidad de entrada que queres"));
-    const total = cantidadEntradas * precioEntrada;
-    for (let i = 0 ; i < cantidadEntradas; i++) {
-        console.log(`imprimiendo entrada ${i + 1}`);
+    const cantidadEntrada = parseInt(prompt("Ingresa la cantidad de entradas que necesites"));
+    const total = precioEntrada * cantidadEntrada;
+
+    for (let i = 0; i < cantidadEntrada; i++){
+        console.log(`Imprimiendo entrada ${i + 1}`);
     }
-    console.log(`cantidad de entradas : ${cantidadEntradas}, total : $${total}`);
+    console.log(`Cantidad de entradas es : ${cantidadEntrada} y el total es : $${total}`);
 }
 
 comprarEntradas();
