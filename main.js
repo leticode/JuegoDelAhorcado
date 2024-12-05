@@ -5,8 +5,6 @@ function comprarEntradas() {
         return;
     }
     else{
-        alert("Tenes la edad suficiente para ver la pelicula");
-    }
     const precioEntrada = 300;
     const cantidadEntrada = parseInt(prompt("Ingresa la cantidad de entradas que necesites"));
     const total = precioEntrada * cantidadEntrada;
@@ -15,6 +13,7 @@ function comprarEntradas() {
         console.log(`Imprimiendo entrada ${i + 1}`);
     }
     console.log(`Cantidad de entradas es : ${cantidadEntrada} y el total es : $${total}`);
+}
 }
 
 comprarEntradas();
