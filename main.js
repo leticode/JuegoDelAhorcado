@@ -2,7 +2,6 @@ function comprarEntradas() {
     const edad = parseInt(prompt("Ingrese su edad"));
     if (edad < 18 ){
         alert("No tenes la edad suficiente para ver la pelicula");
-        return;
     }
     else{
     const precioEntrada = 300;
