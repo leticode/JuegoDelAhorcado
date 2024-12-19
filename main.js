@@ -1,6 +1,8 @@
 let palabraElegida = elegirPalabraAlAzar();
 let palabraElegidaNombre = palabraElegida.nombre;
-let palabraElegidaDescripcion = palabraElegida.descripcion
+let palabraElegidaDescripcion = palabraElegida.descripcion;
+console.log(palabraElegidaNombre);
+let letraPresionada = [];
 
 function elegirPalabraAlAzar() {
     let palabras = [
@@ -65,11 +67,24 @@ function elegirPalabraAlAzar() {
 
     
     ];
-    let indiceAleatorio = Math.floor(Math.random() * palabras);
+    let indiceAleatorio = Math.floor(Math.random() * palabras.length);
     let objetoPalabra = palabras[indiceAleatorio];
     return objetoPalabra;
 }
 
 function crearTeclado() {
     let letras = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "n", "m", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"];
+}
+
+function actualizarPalabraAdivinada() {
+    let palabraIntentada = "";
+    for (let letra of palabraElegidaNombre){
+        if(letraPresionada.includes(letra.toLocaleLowerCase)){
+            palabraElegida+= letra;
+        }
+        else{
+            palabraIntentada+= "_";
+        }
+    }
+
 }
