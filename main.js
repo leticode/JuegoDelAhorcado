@@ -64,9 +64,8 @@ function elegirPalabraAlAzar() {
         { nombre: "Ingeniero", descripcion: "Diseña soluciones técnicas usando ciencia y matemáticas." },
         { nombre: "Profesor", descripcion: "Guía del conocimiento que siembra ideas, habilidades y valores" },
         { nombre: "Arquitecto", descripcion: "Creador de espacios funcionales y estéticamente agradables" }
-
-    
     ];
+    
     let indiceAleatorio = Math.floor(Math.random() * palabras.length);
     let objetoPalabra = palabras[indiceAleatorio];
     return objetoPalabra;
