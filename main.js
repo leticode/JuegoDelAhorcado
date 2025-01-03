@@ -3,6 +3,7 @@ let palabraElegidaNombre = palabraElegida.nombre;
 let palabraElegidaDescripcion = palabraElegida.descripcion;
 console.log(palabraElegidaNombre);
 let letraPresionada = [];
+crearTeclado();
 
 function elegirPalabraAlAzar() {
     let palabras = [
@@ -72,7 +73,20 @@ function elegirPalabraAlAzar() {
 }
 
 function crearTeclado() {
+    let contenedorTeclado = document.querySelector(".contenedorTeclado");
     let letras = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "n", "m", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"];
+    for(let letra of letras){
+        let teclado = document.createElement("button");
+        teclado.textContent = letra;
+        teclado.className = "btnTeclado";
+        contenedorTeclado.appendChild(teclado);
+        teclado.addEventListener("click", () =>{
+            if(teclado.className === "btnTeclado"){
+                letraPresionada.push(letra);
+                teclado.className = "presionada";
+            }
+        })
+    }
 }
 
 function actualizarPalabraAdivinada() {
