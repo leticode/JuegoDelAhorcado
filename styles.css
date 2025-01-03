@@ -1,0 +1,63 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body{
+
+}
+
+.contenedorPrincipal{
+
+}
+
+.contenedorGrid{
+
+}
+
+.contenedorImagen{
+
+}
+
+#hangmanImg{
+
+}
+
+.contenedorDerecha{
+
+}
+
+.contenedorPalabra{
+
+}
+
+.contenedorFallos{
+
+}
+
+.ayudaPalabra{
+
+}
+
+.contenedorTeclado {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 4px;
+    justify-content: center;
+    width: 95%;
+    max-width: 350px;
+    text-align: center;
+}
+
+.contenedorTeclado button {
+    flex: 0 0 calc(100% / 9 - 4px);
+    max-width: calc(100% / 9 - 4px);
+}
+.btnTeclado{
+    background-color: aqua;
+}
+
+.presionada{
+    background-color: blueviolet;
+}
