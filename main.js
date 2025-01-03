@@ -1,9 +1,13 @@
 let palabraElegida = elegirPalabraAlAzar();
-let palabraElegidaNombre = palabraElegida.nombre;
+let palabraQueHayQueAdivinar = palabraElegida.nombre;
 let palabraElegidaDescripcion = palabraElegida.descripcion;
-console.log(palabraElegidaNombre);
+console.log(palabraQueHayQueAdivinar);
 let letraPresionada = [];
+let fallos = 0;
+let maximoDeFallos = 6;
 crearTeclado();
+actualizarPalabraAdivinada();
+actualizarFallos();
 
 function elegirPalabraAlAzar() {
     let palabras = [
@@ -84,6 +88,14 @@ function crearTeclado() {
             if(teclado.className === "btnTeclado"){
                 letraPresionada.push(letra);
                 teclado.className = "presionada";
+                if(palabraQueHayQueAdivinar.toLocaleLowerCase().includes(letra) === false){
+                    fallos++;
+                    actualizarFallos();
+                }
+                if(fallos > maximoDeFallos){
+
+                }
+                actualizarPalabraAdivinada();
             }
         })
     }
@@ -91,7 +103,7 @@ function crearTeclado() {
 
 function actualizarPalabraAdivinada() {
     let palabraIntentada = "";
-    for (let letra of palabraElegidaNombre){
+    for (let letra of palabraQueHayQueAdivinar){
         if(letraPresionada.includes(letra.toLocaleLowerCase)){
             palabraElegida+= letra;
         }
@@ -99,5 +111,35 @@ function actualizarPalabraAdivinada() {
             palabraIntentada+= "_";
         }
     }
+    let contenedorPalabra = document.querySelector(".contenedorPalabra");
+    contenedorPalabra.textContent = palabraIntentada;
+}
 
+function actualizarFallos(){
+    let contenedorFallos = document.querySelector(".contenedorFallos");
+    contenedorFallos.textContent = "Fallos : " + fallos + " / " + (maximoDeFallos + 1);
+    let hangmanImg = document.querySelector("#hangmanImg");
+    if(fallos <= maximoDeFallos){
+        hangmanImg.src = "img/hangman-" + fallos + ".svg";
+    }
+}
+
+function mostrarOverlay(texto, img){
+    let overlay = document.querySelector(".overlay");
+    overlay.style.display = "flex";
+    let textoOverlay = document.createElement("div");
+    textoOverlay.textContent = texto;
+    overlay.appendChild(textoOverlay);
+
+    let imagen = document.createElement("img");
+    imagen.src = img;
+    imagen.className = "imagenGiftCara";
+    overlay.appendChild(imagen);
+    
+    let btnOverlay = document.createElement("button");
+    btnOverlay.textContent = "Volver a jugar";
+    overlay.appendChild(btnOverlay);
+    btnOverlay.addEventListener("click", () => {
+        location.reload();
+    });
 }

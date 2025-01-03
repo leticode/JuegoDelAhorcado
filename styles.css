@@ -29,7 +29,9 @@ body{
 }
 
 .contenedorPalabra{
-
+    letter-spacing: 10px;
+    text-align: center;
+    padding-bottom: 20px;
 }
 
 .contenedorFallos{
