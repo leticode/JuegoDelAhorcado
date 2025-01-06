@@ -3,7 +3,6 @@ let palabraQueHayQueAdivinar = palabraElegida.nombre;
 let palabraElegidaDescripcion = palabraElegida.descripcion;
 let ayudaPalabra = document.querySelector(".ayudaPalabra");
 ayudaPalabra.textContent = palabraElegidaDescripcion;
-console.log(palabraQueHayQueAdivinar);
 let letraPresionada = [];
 let fallos = 0;
 let maximoDeFallos = 6;
