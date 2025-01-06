@@ -1,46 +1,103 @@
+:root{
+    --centrarTexto: center;
+    --colorTexto: #edf1fd;
+    --colorTexto2 : #82a0eb ;
+    --colorSecundario:#213f88;
+    --colorAcentuado: #4371e4 ;
+    --textoGrande : 1.5rem;
+}
+
 *{
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    font-family: "Fredoka", sans-serif;
 }
 
 body{
+    background: linear-gradient(220.55deg, #4063BC 0%, #6B0013 100%);
+}
 
+.overlay{
+    display: none;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    gap: 30px;
+    position: fixed;
+    z-index: 1000;
+    top: 0;
+    left: 0;
+    background-color:#000000da;
+    color: var(--colorTexto);
+    width: 100vw;
+    height: 100vh;
+}
+
+.btnOverlay{
+    padding: 5px;
+    margin-top: 20px;
+    background-color: var(--colorSecundario);
+    color: var(--colorTexto);
+    border: 2px solid var(--colorAcentuado); 
+    border-radius: 5px;
+}
+
+.imagenGiftCara{
+    width: 200px;
 }
 
 .contenedorPrincipal{
-
+    height: 100vh;
+    margin-top:20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    color: var(--colorPrincipal2);
 }
 
 .contenedorGrid{
-
+    display: grid;
+    grid-template-columns: 1fr;
+    place-items: center;
 }
 
-.contenedorImagen{
-
-}
-
-#hangmanImg{
-
+#hangmanImg {
+    max-height: 40vh;
 }
 
 .contenedorDerecha{
-
+    background-color: #00000074;
+    padding: 20px 5px;
+    margin: 20px 5px 0px 5px;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
 }
 
 .contenedorPalabra{
     letter-spacing: 10px;
+    font-weight: 600;
     text-align: center;
-    padding-bottom: 20px;
+    font-size: var(--textoGrande);
+    color: var(--colorTexto);
 }
 
 .contenedorFallos{
-
+    font-weight: 600;
+    display: flex;
+    justify-content: center;
+    color: var(--colorSecundario);
 }
 
 .ayudaPalabra{
-
+    font-weight: 400;
+    color: var(--colorTexto);
+    text-align: center;
 }
+
 
 .contenedorTeclado {
     display: flex;
@@ -56,10 +113,41 @@ body{
     flex: 0 0 calc(100% / 9 - 4px);
     max-width: calc(100% / 9 - 4px);
 }
+
 .btnTeclado{
-    background-color: aqua;
+    background-color: var(--colorSecundario);
+    color: var(--colorTexto);
+    border: none;
+    font-size: var(--textoGrande);
+    border-radius: 5px;
 }
 
 .presionada{
-    background-color: blueviolet;
+    background-color: var(--colorAcentuado);
+    border: none;
+    color: var(--colorTexto);
+    font-size: var(--textoGrande);
+    border-radius: 5px;
+}
+
+/*MEDIAQUERIES TABLET Y COMPUTADORA*/
+
+@media (min-width: 768px){
+
+    .contenedorPrincipal{
+        margin: 0 20px;
+        justify-content: center;
+    }
+
+    .contenedorGrid{
+        grid-template-columns: 1fr 1fr;
+    }
+
+    #hangmanImg {
+        max-height: 80vh;
+    }
+
+    .contenedorTeclado{
+        width: 500px;
+    }
 }
