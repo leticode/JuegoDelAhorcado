@@ -1,6 +1,8 @@
 let palabraElegida = elegirPalabraAlAzar();
 let palabraQueHayQueAdivinar = palabraElegida.nombre;
 let palabraElegidaDescripcion = palabraElegida.descripcion;
+let ayudaPalabra = document.querySelector(".ayudaPalabra");
+ayudaPalabra.textContent = palabraElegidaDescripcion;
 console.log(palabraQueHayQueAdivinar);
 let letraPresionada = [];
 let fallos = 0;
@@ -107,7 +109,7 @@ function actualizarPalabraAdivinada() {
     let palabraIntentada = "";
     for (let letra of palabraQueHayQueAdivinar){
         if(letraPresionada.includes(letra.toLocaleLowerCase())){
-            palabraElegida+= letra;
+            palabraIntentada+= letra;
         }
         else{
             palabraIntentada+= "_";
