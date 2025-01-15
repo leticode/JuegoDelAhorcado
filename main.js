@@ -7,13 +7,15 @@ ayudaPalabra.textContent = palabraElegidaDescripcion;
 let letraPresionada = [];
 let fallos = 0;
 let maximoDeFallos = 6;
-let puntos = 0;
 crearTeclado();
 actualizarPalabraAdivinada();
 actualizarFallos();
 let cantidadSinPerder = parseInt(localStorage.getItem("partidasSinPerder") || 0);
 let contenedorPartidasSinPerder = document.querySelector(".contenedorPartidas");
 contenedorPartidasSinPerder.textContent = "Partidas consecutivas sin perder: " + cantidadSinPerder;
+let ultimasPalabras = JSON.parse(localStorage.getItem("ultimasPalabras") || "[]");
+let contenedorUltimasPalabras = document.querySelector(".contenedorUltimasPalabras");
+contenedorUltimasPalabras.textContent = "Ultimas: " + ultimasPalabras.join(", ");
 
 function elegirPalabraAlAzar() {
     let palabras = [
@@ -102,6 +104,7 @@ function crearTeclado() {
                     if (fallos > maximoDeFallos) {
                         mostrarOverlay("PERDISTE " + " la palabra era : " + palabraQueHayQueAdivinar, "img/lost.gif");
                         localStorage.setItem("partidasSinPerder", 0);
+                        localStorage.setItem("ultimasPalabras", "[]");
                     }
                 }
                 actualizarPalabraAdivinada();
@@ -126,6 +129,8 @@ function actualizarPalabraAdivinada() {
     if (palabraIntentada === palabraQueHayQueAdivinar){
         mostrarOverlay("GANASTE !", "img/victory.gif");
         localStorage.setItem("partidasSinPerder", cantidadSinPerder + 1);
+        ultimasPalabras.push(palabraQueHayQueAdivinar);
+        localStorage.setItem("ultimasPalabras", JSON.stringify(ultimasPalabras));
         
     }
 }
