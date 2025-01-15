@@ -1,3 +1,4 @@
+
 let palabraElegida = elegirPalabraAlAzar();
 let palabraQueHayQueAdivinar = palabraElegida.nombre;
 let palabraElegidaDescripcion = palabraElegida.descripcion;
@@ -6,9 +7,13 @@ ayudaPalabra.textContent = palabraElegidaDescripcion;
 let letraPresionada = [];
 let fallos = 0;
 let maximoDeFallos = 6;
+let puntos = 0;
 crearTeclado();
 actualizarPalabraAdivinada();
 actualizarFallos();
+let cantidadSinPerder = parseInt(localStorage.getItem("partidasSinPerder") || 0);
+let contenedorPartidasSinPerder = document.querySelector(".contenedorPartidas");
+contenedorPartidasSinPerder.textContent = "Partidas consecutivas sin perder: " + cantidadSinPerder;
 
 function elegirPalabraAlAzar() {
     let palabras = [
@@ -96,6 +101,7 @@ function crearTeclado() {
                 if(fallos > maximoDeFallos){
                     if (fallos > maximoDeFallos) {
                         mostrarOverlay("PERDISTE " + " la palabra era : " + palabraQueHayQueAdivinar, "img/lost.gif");
+                        localStorage.setItem("partidasSinPerder", 0);
                     }
                 }
                 actualizarPalabraAdivinada();
@@ -119,6 +125,8 @@ function actualizarPalabraAdivinada() {
     
     if (palabraIntentada === palabraQueHayQueAdivinar){
         mostrarOverlay("GANASTE !", "img/victory.gif");
+        localStorage.setItem("partidasSinPerder", cantidadSinPerder + 1);
+        
     }
 }
 
@@ -132,8 +140,8 @@ function actualizarFallos(){
 }
 
 function mostrarOverlay(texto, img){
-    let overlay = document.querySelector(".overlay");
-    overlay.style.display = "flex";
+    let overlay = document.querySelector("#overlay");
+    overlay.classList.add("encendido");
     let textoOverlay = document.createElement("div");
     textoOverlay.textContent = texto;
     overlay.appendChild(textoOverlay);
@@ -145,8 +153,11 @@ function mostrarOverlay(texto, img){
 
     let btnOverlay = document.createElement("button");
     btnOverlay.textContent = "Volver a jugar";
+    btnOverlay.className = "btnOverlay"
     overlay.appendChild(btnOverlay);
     btnOverlay.addEventListener("click", () => {
         location.reload();
     });
 }
+
+

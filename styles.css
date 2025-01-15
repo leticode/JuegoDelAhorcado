@@ -18,8 +18,13 @@ body{
     background: linear-gradient(220.55deg, #4063BC 0%, #6B0013 100%);
 }
 
+
 .overlay{
     display: none;
+}
+
+.overlay.encendido{
+    display: flex;
     align-items: center;
     justify-content: center;
     flex-direction: column;
@@ -40,7 +45,7 @@ body{
     background-color: var(--colorSecundario);
     color: var(--colorTexto);
     border: 2px solid var(--colorAcentuado); 
-    border-radius: 5px;
+    border-radius: 10px;
 }
 
 .imagenGiftCara{
@@ -128,6 +133,10 @@ body{
     color: var(--colorTexto);
     font-size: var(--textoGrande);
     border-radius: 5px;
+}
+
+.contenedorPartidas{
+    color: var(--colorTexto);
 }
 
 /*MEDIAQUERIES TABLET Y COMPUTADORA*/
