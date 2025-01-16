@@ -59,7 +59,7 @@ function elegirPalabraAlAzar() {
         { nombre: "Paciencia", descripcion: "La calma que se encuentra en la espera" },
         { nombre: "Neurona", descripcion: "Célula del sistema nervioso encargada de transmitir impulsos eléctricos" },
         { nombre: "Pancreas", descripcion: "Órgano que se encuentra detrás del estómago y produce enzimas digestivas y hormonas, como la insulina" },
-        { nombre: "Hígado", descripcion: "Órgano vital que se encarga de metabolizar sustancias y producir bilis para la digestión" },
+        { nombre: "Higado", descripcion: "Órgano vital que se encarga de metabolizar sustancias y producir bilis para la digestión" },
         { nombre: "Aorta", descripcion: "La arteria principal que transporta sangre oxigenada desde el corazón hacia el resto del cuerpo" },
         { nombre: "Traquea", descripcion: "Conducto respiratorio que conecta la laringe con los pulmones" },
         { nombre: "Venacava", descripcion: "Vena que transporta la sangre desoxigenada desde el cuerpo de vuelta al corazón" },
@@ -100,12 +100,23 @@ function crearTeclado() {
                     fallos++;
                     actualizarFallos();
                 }
-                if(fallos > maximoDeFallos){
-                    if (fallos > maximoDeFallos) {
-                        mostrarOverlay("PERDISTE " + " la palabra era : " + palabraQueHayQueAdivinar, "img/lost.gif");
-                        localStorage.setItem("partidasSinPerder", 0);
-                        localStorage.setItem("ultimasPalabras", "[]");
-                    }
+                if(fallos === maximoDeFallos){
+                    Swal.fire({
+                        title: "Te queda un ultimo intento!",
+                        icon: "warning",
+                        width: 400,
+                        customClass: {
+                            popup: 'custom-popup',
+                            icon: 'custom-icon',
+                            confirmButton: 'custom-button'
+                        }
+                    });
+                    
+                }
+                if (fallos > maximoDeFallos) {
+                    mostrarOverlay("PERDISTE " + " la palabra era : " + palabraQueHayQueAdivinar, "img/lost.gif");
+                    localStorage.setItem("partidasSinPerder", 0);
+                    localStorage.setItem("ultimasPalabras", "[]");
                 }
                 actualizarPalabraAdivinada();
             }
@@ -150,12 +161,12 @@ function mostrarOverlay(texto, img){
     let textoOverlay = document.createElement("div");
     textoOverlay.textContent = texto;
     overlay.appendChild(textoOverlay);
-
+    
     let imagen = document.createElement("img");
     imagen.src = img;
     imagen.className = "imagenGiftCara";
     overlay.appendChild(imagen);
-
+    
     let btnOverlay = document.createElement("button");
     btnOverlay.textContent = "Volver a jugar";
     btnOverlay.className = "btnOverlay"

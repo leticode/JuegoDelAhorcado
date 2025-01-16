@@ -139,6 +139,30 @@ body{
     color: var(--colorTexto);
 }
 
+.contenedorUltimasPalabras{
+    color: var(--centrarTexto);
+    background-color: var(--colorSecundario);
+}
+
+.swal2-popup.custom-popup {
+    background-color: #0000008b;
+}
+
+.swal2-icon.custom-icon {
+    color: var(--colorSecundario);
+}
+
+.swal2-confirm.custom-button {
+    background-color: var(--colorAcentuado);
+    color: var(--colorTexto);
+}
+
+.swal2-confirm.custom-button:hover {
+    background-color: #e64a19;
+}
+
+
+
 /*MEDIAQUERIES TABLET Y COMPUTADORA*/
 
 @media (min-width: 768px){
