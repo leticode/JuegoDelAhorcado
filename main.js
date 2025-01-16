@@ -108,7 +108,8 @@ function crearTeclado() {
                         customClass: {
                             popup: 'custom-popup',
                             icon: 'custom-icon',
-                            confirmButton: 'custom-button'
+                            confirmButton: 'custom-button',
+                            title: 'custom-title',
                         }
                     });
                     

@@ -140,16 +140,19 @@ body{
 }
 
 .contenedorUltimasPalabras{
-    color: var(--centrarTexto);
-    background-color: var(--colorSecundario);
+    color: var(--colorAcentuado);
 }
 
 .swal2-popup.custom-popup {
-    background-color: #0000008b;
+    background-color: #000000c2;
 }
 
 .swal2-icon.custom-icon {
     color: var(--colorSecundario);
+}
+
+.custom-title{
+    color: var(--colorTexto);
 }
 
 .swal2-confirm.custom-button {
@@ -157,8 +160,9 @@ body{
     color: var(--colorTexto);
 }
 
+
 .swal2-confirm.custom-button:hover {
-    background-color: #e64a19;
+    background-color: var(--colorTexto2);
 }
 
 
