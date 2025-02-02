@@ -100,25 +100,6 @@ function crearTeclado() {
                     fallos++;
                     actualizarFallos();
                 }
-                if(fallos === maximoDeFallos){
-                    Swal.fire({
-                        title: "Te queda un ultimo intento!",
-                        icon: "warning",
-                        width: 400,
-                        customClass: {
-                            popup: 'custom-popup',
-                            icon: 'custom-icon',
-                            confirmButton: 'custom-button',
-                            title: 'custom-title',
-                        }
-                    });
-                    
-                }
-                if (fallos > maximoDeFallos) {
-                    mostrarOverlay("PERDISTE " + " la palabra era : " + palabraQueHayQueAdivinar, "img/lost.gif");
-                    localStorage.setItem("partidasSinPerder", 0);
-                    localStorage.setItem("ultimasPalabras", "[]");
-                }
                 actualizarPalabraAdivinada();
             }
         })
@@ -153,6 +134,25 @@ function actualizarFallos(){
     let hangmanImg = document.querySelector("#hangmanImg");
     if(fallos <= maximoDeFallos){
         hangmanImg.src = "img/hangman-" + fallos + ".svg";
+    }
+    if(fallos === maximoDeFallos){
+        Swal.fire({
+            title: "Te queda un ultimo intento!",
+            icon: "warning",
+            width: 400,
+            customClass: {
+                popup: 'custom-popup',
+                icon: 'custom-icon',
+                confirmButton: 'custom-button',
+                title: 'custom-title',
+            }
+        });
+        
+    }
+    if (fallos > maximoDeFallos) {
+        mostrarOverlay("PERDISTE " + " la palabra era : " + palabraQueHayQueAdivinar, "img/lost.gif");
+        localStorage.setItem("partidasSinPerder", 0);
+        localStorage.setItem("ultimasPalabras", "[]");
     }
 }
 
