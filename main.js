@@ -124,9 +124,21 @@ function actualizarPalabraAdivinada() {
         localStorage.setItem("partidasSinPerder", cantidadSinPerder + 1);
         ultimasPalabras.push(palabraQueHayQueAdivinar);
         localStorage.setItem("ultimasPalabras", JSON.stringify(ultimasPalabras));
-        
+        obtenerChiste();        
     }
 }
+
+async function obtenerChiste() {
+    try {
+        let respuesta = await fetch("https://v2.jokeapi.dev/joke/Any?lang=es&format=txt");
+        let chiste = await respuesta.text();
+        document.getElementById("chiste").textContent = chiste;
+    } catch (error) {
+        console.error("Error al obtener el chiste:", error);
+        document.getElementById("chiste").textContent = "Error al cargar el chiste.";
+    }
+}
+
 
 function actualizarFallos(){
     let contenedorFallos = document.querySelector(".contenedorFallos");
@@ -167,6 +179,10 @@ function mostrarOverlay(texto, img){
     imagen.src = img;
     imagen.className = "imagenGiftCara";
     overlay.appendChild(imagen);
+
+    let chiste = document.createElement("div");
+    chiste.id = "chiste";
+    overlay.appendChild(chiste);
     
     let btnOverlay = document.createElement("button");
     btnOverlay.textContent = "Volver a jugar";
